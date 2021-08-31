@@ -26,6 +26,9 @@ pipelines:
         type: Matrix
         configuration:
           nodePool: Automation_AWS_S-Matrix-6230-0001
+          multiNode: true
+          runtime:
+            type: host
         stepletMultipliers:
           fastFail: true
           environmentVariables:
@@ -33,10 +36,6 @@ pipelines:
               bar: echo bar1
             - foo: 2
               bar: echo bar2
-        configuration:
-          multiNode: true
-          runtime:
-            type: host
         execution:
           onExecute:
             - echo $foo
