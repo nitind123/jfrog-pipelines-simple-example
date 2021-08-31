@@ -10,30 +10,11 @@ resources:
       branches:
         include: master
 
-  - name: myPropertyBag
-    type: PropertyBag
-    configuration:
-      testCase: 0
-
 pipelines:
   - name: test_pipeline1
     steps:
       - name: step1
         type: Bash
-        configuration:
-          outputResources:
-            - name: myPropertyBag
         execution:
           onExecute:
-            - write_output myPropertyBag testCase='Test P_SYC_Pipelines_6196_001'
-
-  - name: test_pipeline2
-    steps:
-      - name: step2
-        type: Bash
-        configuration:
-          inputResources:
-            - name: myPropertyBag
-        execution:
-          onExecute:
-            - echo "test case is $res_myPropertyBag_testCase"
+            - echo "P_SYC_Pipelines_6196_001"
