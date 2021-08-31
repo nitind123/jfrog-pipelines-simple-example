@@ -28,10 +28,10 @@ pipelines:
             - write_output myPropertyBag testCase='Test P_SYC_Pipelines_6196_001'
 
       - name: step2
-            type: Bash
-            configuration:
-              inputResources:
-                - name: myPropertyBag
-            execution:
-              onExecute:
-                - echo "CommitSha is $res_myPropertyBag_testCase"
+        type: Bash
+        configuration:
+          inputResources:
+            - name: myPropertyBag
+        execution:
+          onExecute:
+            - echo "CommitSha is $res_myPropertyBag_testCase"
