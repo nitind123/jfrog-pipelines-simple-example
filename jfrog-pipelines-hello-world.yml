@@ -2,7 +2,7 @@ template: true
 valuesFilePath: ./values.yml
 
 resources:
-  - name: myFirstRepo
+  - name: S-Matrix-6230-0001_gitrepo
     type: GitRepo
     configuration:
       gitProvider: {{ .Values.myRepo.gitProvider }}
@@ -11,10 +11,34 @@ resources:
         include: master
 
 pipelines:
-  - name: test_pipeline1
+  - name: S-Matrix-6230-0001_normalStepPipeline
     steps:
-      - name: step1
+      - name: normalStep
         type: Bash
+        configuration:
+          nodePool: Automation_AWS_S-Matrix-6230-0001
         execution:
           onExecute:
-            - echo "P_SYC_Pipelines_6196_001"
+            - echo "Normal Step"
+  - name: S-Matrix-6230-0001_matrixStepPipeline
+    steps:
+      - name: matrixStep
+        type: Matrix
+        configuration:
+          nodePool: Automation_AWS_S-Matrix-6230-0001
+        stepletMultipliers:
+          fastFail: true
+          environmentVariables:
+            - foo: 1
+              bar: echo bar1
+            - foo: 2
+              bar: echo bar2
+        configuration:
+          multiNode: true
+          runtime:
+            type: host
+        execution:
+          onExecute:
+            - echo $foo
+            - sleep 5;
+            - $bar
