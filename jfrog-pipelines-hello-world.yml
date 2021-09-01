@@ -2,7 +2,7 @@ template: true
 valuesFilePath: ./values.yml
 
 resources:
-  - name: S_Matrix_6230_0001_gitrepo
+  - name: myFirstRepo
     type: GitRepo
     configuration:
       gitProvider: {{ .Values.myRepo.gitProvider }}
@@ -11,30 +11,10 @@ resources:
         include: master
 
 pipelines:
-  - name: S_Matrix_6230_0001_normalStepPipeline
+  - name: test_pipeline1
     steps:
-      - name: normalStep
+      - name: step1
         type: Bash
         execution:
           onExecute:
-            - echo "Normal Step"
-  - name: S_Matrix_6230_0001_matrixStepPipeline
-    steps:
-      - name: matrixStep
-        type: Matrix
-        configuration:
-          multiNode: true
-          runtime:
-            type: host
-        stepletMultipliers:
-          fastFail: true
-          environmentVariables:
-            - foo: 1
-              bar: echo bar1
-            - foo: 2
-              bar: echo bar2
-        execution:
-          onExecute:
-            - echo $foo
-            - sleep 5;
-            - $bar
+            - echo "P_SYC_Pipelines_6196_001"
