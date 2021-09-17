@@ -17,4 +17,20 @@ pipelines:
         type: Bash
         execution:
           onExecute:
-            - echo "P_SYC_Pipelines_6196_001"
+            - echo "P1"
+            
+  - name: test_pipeline2
+    steps:
+      - name: step2
+        type: Bash
+        execution:
+          onExecute:
+            - echo "P2"
+            
+  - name: test_pipeline3
+    steps:
+      - name: step3
+        type: Bash
+        execution:
+          onExecute:
+            - echo "P3"
