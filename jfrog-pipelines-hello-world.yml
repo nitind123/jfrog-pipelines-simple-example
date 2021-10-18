@@ -34,12 +34,3 @@ pipelines:
         execution:
           onExecute:
             - echo "P3"
-
-  - name: test_pipeline4
-    steps:
-      - name: step4
-        type: Bash
-        execution:
-          onExecute:
-            - sleep 5;
-            - echo "P4"
