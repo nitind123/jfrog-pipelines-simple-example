@@ -35,4 +35,4 @@ pipelines:
         type: Bash
         execution:
           onExecute:
-            - echo "P33"
+            - echo "P3"
