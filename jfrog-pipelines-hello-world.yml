@@ -7,6 +7,8 @@ resources:
     configuration:
       gitProvider: {{ .Values.myRepo.gitProvider }}
       path: {{ .Values.myRepo.path }}
+      buildOn:
+        commit: true
       branches:
         include: master
 
