@@ -28,6 +28,9 @@ pipelines:
     steps:
       - name: step2
         type: Bash
+        configuration:
+          inputSteps:
+            - name: step1
         execution:
           onExecute:
             - echo "P2"
