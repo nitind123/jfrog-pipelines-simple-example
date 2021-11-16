@@ -23,14 +23,6 @@ pipelines:
         execution:
           onExecute:
             - echo "P1"
-      - name: step21
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: step1
-        execution:
-          onExecute:
-            - echo "P21"
             
   - name: test_pipeline2
     steps:
