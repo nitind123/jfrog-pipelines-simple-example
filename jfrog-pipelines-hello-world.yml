@@ -46,4 +46,4 @@ pipelines:
         type: Bash
         execution:
           onExecute:
-            - echo "P31"
+            - echo "P3"
