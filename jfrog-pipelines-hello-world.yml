@@ -26,6 +26,8 @@ pipelines:
         configuration:
           inputResources:
             - name: myFirstRepo
+          outputResources:
+            - name: propertyBag
         execution:
           onExecute:
             - echo "P1"
