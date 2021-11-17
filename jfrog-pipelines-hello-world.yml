@@ -29,7 +29,7 @@ pipelines:
         execution:
           onExecute:
             - echo "P1"
-            - write_output propertyBag "foo=1"
+            - write_output propertyBag "foo=$run_number"
             
   - name: test_pipeline2
     steps:
