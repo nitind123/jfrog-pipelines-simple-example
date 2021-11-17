@@ -11,6 +11,12 @@ resources:
         commit: true
       branches:
         include: master
+  - name: propertyBag
+    type: PropertyBag
+    configuration:
+      foo: bar
+      foo1: bar1
+      foo2: bar2
 
 pipelines:
   - name: test_pipeline1
@@ -23,11 +29,16 @@ pipelines:
         execution:
           onExecute:
             - echo "P1"
+            - write_output propertyBag "foo=1"
             
   - name: test_pipeline2
     steps:
       - name: step2
         type: Bash
+        configuration:
+          inputResources:
+            - name: propertyBag
+              trigger: true
         execution:
           onExecute:
             - echo "P2"
