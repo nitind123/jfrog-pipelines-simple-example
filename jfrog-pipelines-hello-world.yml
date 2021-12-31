@@ -17,3 +17,48 @@ resources:
       foo: bar
       foo1: bar1
       foo2: bar2
+
+pipelines:
+  - name: my_first_pipeline
+    steps:
+      - name: p1_s1
+        type: Bash
+        configuration:
+          inputResources:
+            # Sets up step to be triggered when there are commit events to myFirstRepo
+            - name: myFirstRepo
+        execution:
+          onExecute:
+            - add_run_variables current_runid=$run_id
+            - echo $current_runid
+            - add_pipeline_variables current_runid=
+            - echo $current_runid
+
+      - name: p1_s2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: p1_s1
+        execution:
+          onExecute:
+            # Demonstrates the availability of an env variable written to run state during p1_s1
+            - echo $current_runid
+            - add_pipeline_variables current_runid=
+
+      - name: p1_s3
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: p1_s2
+        execution:
+          onExecute:
+            - echo $current_runid
+
+  - name: my_second_pipeline
+    steps:
+      - name: p2_s1
+        type: Bash
+        execution:
+          onExecute:
+            # Retrieves the commitSha from input resource
+            - echo "CommitSha is $res_myPropertyBag_commitSha"
