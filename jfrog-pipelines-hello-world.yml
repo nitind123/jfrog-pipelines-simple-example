@@ -51,4 +51,14 @@ pipelines:
         type: Bash
         execution:
           onExecute:
-            - echo "P3"
+            - echo "P3_S3"
+            - add_run_variables temp1="test data"
+            - echo "$temp1"
+       - name: step4
+        type: Bash
+        execution:
+          onExecute:
+            - echo "P3_S4"
+            - echo "$temp1"
+            - add_run_variables temp1=""
+            - echo "$temp1"
