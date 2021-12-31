@@ -54,7 +54,7 @@ pipelines:
             - echo "P3_S3"
             - add_run_variables temp1="test data"
             - echo "$temp1"
-       - name: step4
+      - name: step4
         type: Bash
         execution:
           onExecute:
