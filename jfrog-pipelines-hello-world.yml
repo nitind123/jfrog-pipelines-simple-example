@@ -19,46 +19,58 @@ resources:
       foo2: bar2
 
 pipelines:
-  - name: test_pipeline1
+  - name: my_first_pipeline
     steps:
-      - name: step1
+      - name: p1_s1
         type: Bash
         configuration:
           inputResources:
+            # Sets up step to be triggered when there are commit events to myFirstRepo
             - name: myFirstRepo
-          outputResources:
-            - name: propertyBag
         execution:
           onExecute:
-            - echo "P1"
-            - write_output propertyBag "foo=$run_number"
-            
-  - name: test_pipeline2
+            # Data from input resources is available as env variables in the step
+            - echo $res_myFirstRepo_commitSha
+            # The next two commands add variables to run state, which is available to all downstream steps in this run
+            # Run state documentation: https://www.jfrog.com/confluence/display/JFROG/Creating+Stateful+Pipelines#CreatingStatefulPipelines-RunState
+            - add_run_variables current_runid=$run_id
+            - add_run_variables commitSha=$res_myFirstRepo_commitSha
+            # This variable is written to pipeline state in p1_s3.
+            # So this will be empty during first run and will be set to prior run number in subsequent runs
+            # Pipeline state documentation: https://www.jfrog.com/confluence/display/JFROG/Creating+Stateful+Pipelines#CreatingStatefulPipelines-PipelineState
+            - echo "Previous run ID is $prev_runid"
+
+      - name: p1_s2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: p1_s1
+        execution:
+          onExecute:
+            # Demonstrates the availability of an env variable written to run state during p1_s1
+            - echo $current_runid
+            - add_pipeline_variables current_runid=
+
+      - name: p1_s3
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: p1_s2
+          outputResources:
+            - name: myPropertyBag
+        execution:
+          onExecute:
+            - echo $current_runid
+
+  - name: my_second_pipeline
     steps:
-      - name: step2
+      - name: p2_s1
         type: Bash
         configuration:
           inputResources:
-            - name: propertyBag
-              trigger: true
+            # Sets up step to be triggered when myPropertyBag is updated
+            - name: myPropertyBag
         execution:
           onExecute:
-            - echo "P2"
-            
-  - name: test_pipeline3
-    steps:
-      - name: step3
-        type: Bash
-        execution:
-          onExecute:
-            - echo "P3_S3"
-            - add_run_variables temp1="test data"
-            - echo "$temp1"
-      - name: step4
-        type: Bash
-        execution:
-          onExecute:
-            - echo "P3_S4"
-            - echo "$temp1"
-            - add_run_variables temp1=""
-            - echo "$temp1"
+            # Retrieves the commitSha from input resource
+            - echo "CommitSha is $res_myPropertyBag_commitSha"
