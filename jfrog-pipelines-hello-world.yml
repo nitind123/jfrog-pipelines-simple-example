@@ -32,6 +32,7 @@ pipelines:
             - add_run_variables current_runid=$run_id
             - echo $current_runid
             - add_run_variables current_runid=""
+            - echo $current_runid
 
       - name: p1_s2
         type: Bash
