@@ -296,4 +296,4 @@ pipelines:
         type: Bash
         execution:
           onExecute:
-            - echo "P4"
+            - echo "P5"
