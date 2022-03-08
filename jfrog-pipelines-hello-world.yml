@@ -289,11 +289,3 @@ pipelines:
         execution:
           onExecute:
             - echo "P2"
-            
-  - name: test_pipeline3
-    steps:
-      - name: step3
-        type: Bash
-        execution:
-          onExecute:
-            - echo "P3"
