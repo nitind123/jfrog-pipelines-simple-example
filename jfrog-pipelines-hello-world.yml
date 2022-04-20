@@ -275,7 +275,7 @@ pipelines:
             - name: propertyBag
         execution:
           onExecute:
-            - echo "P1"
+            - echo "P11"
             - write_output propertyBag "foo=$run_number"
             
   - name: test_pipeline2
