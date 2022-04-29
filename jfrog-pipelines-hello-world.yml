@@ -1,345 +1,299 @@
-resources:    
-  - name: vijay
+template: true 
+valuesFilePath: ./values.yml
+
+resources:
+  - name: myFirstRepo
     type: GitRepo
     configuration:
-      gitProvider: s_git
-      path: Priyanshu-xcde/jfrog-pipelines-simple-example
-      files:  # optional
-        include: pipeline.*
-      branches:  # optional
-        include: master
-        exclude: readme        
-      tags:  # optional
-        include: v.* 
-      buildOn:  # optional
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+      buildOn:
         commit: true
-#          pullRequestCreate: true
-#          pullRequestClose: true
-#          releaseCreate: true
-        tagCreate: true
-      shallowDepth: 1  # optional 
-
-  - name: gitres
-    type: GitRepo
-    configuration:
-      gitProvider: s_git
-      path: Priyanshu-xcde/jfrog-pipelines-simple-example
-      files:  # optional
-#         include: pipelines.sh
-        exclude: readme
-      branches:  # optional
-        include: master 
-        exclude: readme
-      buildOn:  # optional
-         commit: false
-#          pullRequestCreate: true
-#          pullRequestClose: true
-#          releaseCreate: true
-#          tagCreate: false
-      shallowDepth: 10  # optional 
-
-  - name: gitpullcreatetrue
-    type: GitRepo
-    configuration:
-      gitProvider: s_git
-      path: Priyanshu-xcde/jfrog-pipelines-simple-example
-      files:  # optional
-#         include: pipelines.sh
-        exclude: readme
-      branches:  # optional
-        include: master 
-#         exclude: test
-      buildOn:  # optional
-         commit: false
-         pullRequestCreate: true
-#          releaseCreate: true
-#          tagCreate: false
-#       shallowDepth: 10  # optional 
-
-  - name: gitpullcreatefalse
-    type: GitRepo
-    configuration:
-      gitProvider: s_git
-      path: Priyanshu-xcde/jfrog-pipelines-simple-example
-      files:  # optional
-#         include: pipelines.sh
-        exclude: readme
-      branches:  # optional
+      branches:
         include: master
-#         exclude: readme
-      buildOn:  # optional
-         commit: false
-         pullRequestCreate: false
-#          releaseCreate: true
-#          tagCreate: false
-      shallowDepth: 10  # optional 
-
-  - name: gitpullclosetrue
+  - name: myFirstRepo2
     type: GitRepo
     configuration:
-      gitProvider: s_git
-      path: Priyanshu-xcde/jfrog-pipelines-simple-example
-      files:  # optional
-#         include: pipelines.sh
-        exclude: readme
-      branches:  # optional
-        include: master
-        exclude: readme
-      buildOn:  # optional
-         commit: false
-#          pullRequestCreate: true
-         pullRequestClose: true
-#          releaseCreate: true
-#          tagCreate: false
-      shallowDepth: 20  # optional   
-
-  - name: gitpullclosefalse
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo3
     type: GitRepo
     configuration:
-      gitProvider: s_git
-      path: Priyanshu-xcde/jfrog-pipelines-simple-example
-      files:  # optional
-#         include: pipelines.sh
-        exclude: readme
-      branches:  # optional
-        include: master
-        exclude: readme
-      buildOn:  # optional
-         commit: false
-#          pullRequestCreate: true
-         pullRequestClose: false
-#          releaseCreate: true
-#          tagCreate: false
-      shallowDepth: 10  # optional     
-
-  - name: gittagcreatetrue
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo4
     type: GitRepo
     configuration:
-      gitProvider: s_git
-      path: Priyanshu-xcde/jfrog-pipelines-simple-example
-      files:  # optional
-#         include: pipelines.sh
-        exclude: readme
-      branches:  # optional
-        include: master
-        exclude: readme
-      tags:  # optional
-        exclude: m.*      
-        include: v.*         
-      buildOn:  # optional
-         commit: false
-#          pullRequestCreate: true
-#          pullRequestClose: false
-#          releaseCreate: true
-         tagCreate: true
-      shallowDepth: 10  # optional        
-
-  - name: gittagcreatefalse
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo5
     type: GitRepo
     configuration:
-      gitProvider: s_git
-      path: Priyanshu-xcde/jfrog-pipelines-simple-example
-      files:  # optional
-#         include: pipelines.sh
-        exclude: readme
-      branches:  # optional
-        include: master
-        exclude: readme
-      buildOn:  # optional
-         commit: false
-#          pullRequestCreate: true
-#          pullRequestClose: false
-#          releaseCreate: 
-         tagCreate: false
-      shallowDepth: 10  # optional 
-
-  - name: gitreleasecreatetrue
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo6
     type: GitRepo
     configuration:
-      gitProvider: s_git
-      path: Priyanshu-xcde/jfrog-pipelines-simple-example
-      files:  # optional
-#         include: pipelines.sh
-        exclude: readme
-      branches:  # optional
-        include: master
-        exclude: readme
-      buildOn:  # optional
-         commit: false
-#          pullRequestCreate: true
-#          pullRequestClose: false
-         releaseCreate: true
-#          tagCreate: true
-      shallowDepth: 10  # optional        
-
-  - name: gitreleasecreatefalse
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo7
     type: GitRepo
     configuration:
-      gitProvider: s_git
-      path: Priyanshu-xcde/jfrog-pipelines-simple-example
-      files:  # optional
-#         include: pipelines.sh
-        exclude: readme
-      branches:  # optional
-        include: master
-        exclude: readme
-      buildOn:  # optional
-         commit: false
-#          pullRequestCreate: true
-#          pullRequestClose: false
-         releaseCreate: false
-#          tagCreate: false
-      shallowDepth: 10  # optiona
-
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo8
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo9
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo10
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo11
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo12
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo13
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo14
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo15
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo16
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo17
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo18
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo19
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo20
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo21
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo22
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo23
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo24
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo25
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo26
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo27
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo28
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo29
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo30
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo31
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo32
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo33
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo34
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo35
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo36
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo37
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo38
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo39
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo40
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo41
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo42
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo43
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo44
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo45
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo46
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo47
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo48
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo49
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: myFirstRepo50
+    type: GitRepo
+    configuration:
+      gitProvider: {{ .Values.myRepo.gitProvider }}
+      path: {{ .Values.myRepo.path }}
+  - name: propertyBag
+    type: PropertyBag
+    configuration:
+      foo: bar
+      foo1: bar1
+      foo2: bar2
 
 pipelines:
-
-  - name: pipelines_true
-  
+  - name: test_pipeline1
     steps:
-      - name: s_BashTriggerTrue
+      - name: step1
         type: Bash
         configuration:
-          environmentVariables:
-            env1: value1
-            env2: value2
           inputResources:
-            - name: vijay
+            - name: myFirstRepo
+          outputResources:
+            - name: propertyBag
         execution:
           onExecute:
-            - printenv 
-            - pushd $res_vijay_resourcePath
-            - git log
-            - ls
-            - cat pipelines.sh    
-
-  - name: pipelines_false
-  
-    steps:
-      - name: s_BashTriggerFalse
-        type: Bash
-        configuration:
-          environmentVariables:
-            env1: value1
-            env2: value2
-          inputResources:
-            - name: gitres
-        execution:
-          onExecute:
-            - printenv 
-            - pushd $res_gitresource_resourcePath
-            - git log
-            - ls
-            - cat pipelines.sh         
+            - echo "P11"
+            - write_output propertyBag "foo=$run_number"
             
-  - name: pipelines_Pullcreatetrue
+  - name: test_pipeline2
     steps:
-      - name: s_BashTriggercreatetrue
+      - name: step2
         type: Bash
         configuration:
-          environmentVariables:
-            env1: value1
-            env2: value2
           inputResources:
-            - name: gitpullcreatetrue
-        execution:              
+            - name: propertyBag
+              trigger: true
+        execution:
           onExecute:
-            - printenv     
-
-  - name: pipelines_pullclosetrue
+            - echo "P2"
+            
+  - name: test_pipeline3
     steps:
-      - name: s_BashTriggerclosetrue
+      - name: step4
         type: Bash
-        configuration:
-          environmentVariables:
-            env1: value1
-            env2: value2
-          inputResources:
-            - name: gitpullclosetrue
-        execution:              
+        execution:
           onExecute:
-            - printenv 
-
-  - name: pipelines_Pullcreatefalse
-    steps:
-      - name: s_BashTriggercreatefalse
-        type: Bash
-        configuration:
-          environmentVariables:
-            env1: value1
-            env2: value2
-          inputResources:
-            - name: gitpullcreatefalse
-        execution:              
-          onExecute:
-            - printenv     
-
-  - name: pipelines_pullclosefalse
-    steps:
-      - name: s_BashTriggerclosefalse
-        type: Bash
-        configuration:
-          environmentVariables:
-            env1: value1
-            env2: value2
-          inputResources:
-            - name: gitpullclosefalse
-        execution:              
-          onExecute:
-            - printenv        
-
-  - name: pipelines_tagcreatefalse
-    steps:
-      - name: s_Bashtagcreatefalse
-        type: Bash
-        configuration:
-          environmentVariables:
-            env1: value1
-            env2: value2
-          inputResources:
-            - name: gittagcreatefalse
-        execution:              
-          onExecute:
-            - printenv     
-
-  - name: pipelines_tagcreatetrue
-    steps:
-      - name: s_Bashtagcreatetrue
-        type: Bash
-        configuration:
-          environmentVariables:
-            env1: value1
-            env2: value2
-          inputResources:
-            - name: gittagcreatetrue
-        execution:              
-          onExecute:
-            - printenv  
-
-  - name: pipelines_releasecreatefalse
-    steps:
-      - name: s_Bashreleasecreatefalse
-        type: Bash
-        configuration:
-          environmentVariables:
-            env1: value1
-            env2: value2
-          inputResources:
-            - name: gitreleasecreatefalse
-        execution:              
-          onExecute:
-            - printenv     
-
-  - name: pipelines_releasecreatetrue
-    steps:
-      - name: s_Bashreleasecreatetrue
-        type: Bash
-        configuration:
-          environmentVariables:
-            env1: value1
-            env2: value2
-          inputResources:
-            - name: gitreleasecreatetrue
-        execution:              
-          onExecute:
-            - printenv     
+            - echo "P6"
