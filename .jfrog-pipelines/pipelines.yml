@@ -13,8 +13,24 @@ resources:
       foo: bar
       foo1: bar1
       foo2: bar2
+  - name: cron_trigger
+    type: CronTrigger
+    configuration:
+      interval: '*/5 * * * *'     # Every 5 minutes
+      branches:
+       include: "master"
 
 pipelines:
+  - name: pipeline_scheduled_triggers
+    steps:
+      - name: step_1
+        type: Bash
+        configuration:
+          inputResources:
+            - name: cron_trigger
+        execution:
+          onExecute:
+            - printenv
   - name: test_pipeline1
     steps:
       - name: step1
