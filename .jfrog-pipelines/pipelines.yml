@@ -16,7 +16,7 @@ resources:
   - name: cron_trigger
     type: CronTrigger
     configuration:
-      interval: '56 16 * * *'
+      interval: '06 18 * * *'
       branches:
        include: "master"
 
