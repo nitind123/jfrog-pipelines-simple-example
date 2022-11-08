@@ -19,6 +19,24 @@ resources:
       interval: '00 13 * * *'
       branches:
        include: "master"
+  - name: cron_trigger2
+    type: CronTrigger
+    configuration:
+      interval: '05 13 * * *'
+      branches:
+       include: "master"
+  - name: cron_trigger3
+    type: CronTrigger
+    configuration:
+      interval: '10 13 * * *'
+      branches:
+       include: "master"
+  - name: cron_trigger4
+    type: CronTrigger
+    configuration:
+      interval: '15 13 * * *'
+      branches:
+       include: "master"
 
 pipelines:
   - name: pipeline_scheduled_triggers
@@ -28,6 +46,36 @@ pipelines:
         configuration:
           inputResources:
             - name: cron_trigger
+        execution:
+          onExecute:
+            - printenv
+  - name: pipeline_scheduled_triggers2
+    steps:
+      - name: step_2
+        type: Bash
+        configuration:
+          inputResources:
+            - name: cron_trigger2
+        execution:
+          onExecute:
+            - printenv
+  - name: pipeline_scheduled_triggers3
+    steps:
+      - name: step_3
+        type: Bash
+        configuration:
+          inputResources:
+            - name: cron_trigger3
+        execution:
+          onExecute:
+            - printenv
+  - name: pipeline_scheduled_triggers4
+    steps:
+      - name: step_4
+        type: Bash
+        configuration:
+          inputResources:
+            - name: cron_trigger4
         execution:
           onExecute:
             - printenv
