@@ -16,27 +16,27 @@ resources:
   - name: cron_trigger
     type: CronTrigger
     configuration:
-      interval: '55 07 * * *'
+      interval: '53 09 * * *'
       branches:
-       include: "master"
+       include: "master*"
   - name: cron_trigger2
     type: CronTrigger
     configuration:
-      interval: '55 07 * * *'
+      interval: '54 09 * * *'
       branches:
-       include: "master"
+       include: "master*"
   - name: cron_trigger3
     type: CronTrigger
     configuration:
-      interval: '55 07 * * *'
+      interval: '55 09 * * *'
       branches:
-       include: "master"
+       include: "master*"
   - name: cron_trigger4
     type: CronTrigger
     configuration:
-      interval: '55 07 * * *'
+      interval: '54 09 * * *'
       branches:
-       include: "master"
+       include: "master*"
 
 pipelines:
   - name: pipeline_scheduled_triggers
