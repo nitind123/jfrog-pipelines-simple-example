@@ -16,25 +16,25 @@ resources:
   - name: cron_trigger
     type: CronTrigger
     configuration:
-      interval: '53 09 * * *'
+      interval: '22 10 * * *'
       branches:
        include: "master*"
   - name: cron_trigger2
     type: CronTrigger
     configuration:
-      interval: '54 09 * * *'
+      interval: '22 10 * * *'
       branches:
        include: "master*"
   - name: cron_trigger3
     type: CronTrigger
     configuration:
-      interval: '55 09 * * *'
+      interval: '22 10 * * *'
       branches:
        include: "master*"
   - name: cron_trigger4
     type: CronTrigger
     configuration:
-      interval: '54 09 * * *'
+      interval: '22 10 * * *'
       branches:
        include: "master*"
 
