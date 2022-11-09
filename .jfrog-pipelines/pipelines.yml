@@ -13,18 +13,12 @@ resources:
       foo: bar
       foo1: bar1
       foo2: bar2
-  - name: cron_trigger
+  - name: artifactory_product_release_cron
     type: CronTrigger
     configuration:
-      interval: '30 04 * * *'
+      interval: 55 04 * * *
       branches:
-       include: "[A-Za-z0-9]+"
-  - name: cron_trigger2
-    type: CronTrigger
-    configuration:
-      interval: '30 04 * * *'
-      branches:
-       include: "[A-Za-z0-9]+"
+        include: ^preRelease/jfrtp-.+$|master
 
 pipelines:
   - name: pipeline_scheduled_triggers
@@ -33,7 +27,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: cron_trigger
+            - name: artifactory_product_release_cron
         execution:
           onExecute:
             - printenv
@@ -43,7 +37,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: cron_trigger2
+            - name: artifactory_product_release_cron
         execution:
           onExecute:
             - printenv
