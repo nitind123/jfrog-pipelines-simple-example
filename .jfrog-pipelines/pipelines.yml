@@ -16,9 +16,15 @@ resources:
   - name: cron_trigger
     type: CronTrigger
     configuration:
-      interval: '50 11 * * *'
+      interval: '30 04 * * *'
       branches:
-       include: "master*"
+       include: "[A-Za-z0-9]+"
+  - name: cron_trigger2
+    type: CronTrigger
+    configuration:
+      interval: '30 04 * * *'
+      branches:
+       include: "[A-Za-z0-9]+"
 
 pipelines:
   - name: pipeline_scheduled_triggers
@@ -31,16 +37,13 @@ pipelines:
         execution:
           onExecute:
             - printenv
-  - name: test_pipeline1
+  - name: pipeline_scheduled_triggers2
     steps:
-      - name: step1
+      - name: step_2
         type: Bash
         configuration:
           inputResources:
-            - name: myFirstRepo
-          outputResources:
-            - name: propertyBag
+            - name: cron_trigger2
         execution:
           onExecute:
-            - echo "1"
-            - write_output propertyBag "foo=$run_number"
+            - printenv
