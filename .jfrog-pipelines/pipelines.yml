@@ -16,7 +16,7 @@ resources:
   - name: artifactory_product_release_cron
     type: CronTrigger
     configuration:
-      interval: */10 * * * *
+      interval: '*/5 * * * *'
       branches:
         include: ^preRelease/jfrtp-.+$|master
 
