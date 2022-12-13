@@ -7,12 +7,12 @@ resources:
     configuration:
       gitProvider: {{ .Values.myRepo.gitProvider }}
       path: {{ .Values.myRepo.path }}
-  - name: propertyBag
-    type: PropertyBag
-    configuration:
-      foo: bar
-      foo1: bar1
-      foo2: bar2
+#   - name: propertyBag
+#     type: PropertyBag
+#     configuration:
+#       foo: bar
+#       foo1: bar1
+#       foo2: bar2
 
 pipelines:
   - name: pipeline_scheduled_triggers
